@@ -1,1 +1,1 @@
-# minecraft-auto-server
+# minecraft-server-automation
