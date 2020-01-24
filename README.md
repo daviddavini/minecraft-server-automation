@@ -4,12 +4,12 @@ A handy python package to automate version updates and server reboots for your (
 
 ## Dependencies
 You need the python package `requests` installed:
-```python
+```bash
 pip install requests
 ```
 
 You need the linux package `screen` installed:
-```python
+```bash
 sudo apt-get install screen
 ```
 
@@ -27,4 +27,17 @@ Put the `server_automation` directory into the directory containing your `server
 │   └── server.jar
 └── server_automation
     └── ...
+```
+
+Add the parent directory to your PYTHONPATH.
+```python
+import sys
+sys.path.append('Path/To/The/Parent/Directory')
+```
+
+Add the following two lines to your crontab:
+
+```bash
+* * * * * python3 -m server_automation --restart-check
+0 * * * * python3 -m server_automation --update-check
 ```
