@@ -1,4 +1,4 @@
-# Minecraft Server Automation
+# (Minecraft) Server Automation
 
 A handy python package to automate version updates and server reboots for your (vanilla) Minecraft server.
 
