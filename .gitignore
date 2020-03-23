@@ -144,3 +144,5 @@ static
 
 # server file
 server/
+world_backups/
+automation_logs/

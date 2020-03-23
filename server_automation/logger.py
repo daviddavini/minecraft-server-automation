@@ -1,16 +1,17 @@
 from server_automation import utilities
 
+import os
 import datetime
 
-LOGS_DIR = utilities.PACKAGE_ROOT / 'logs'
+LOGS_DIR = utilities.PACKAGE_PARENT_DIR / 'automation_logs'
 
 BASE_LOG_FILENAME = 'automation.log'
-BASE_LOG_PATH = LOGS_DIR / BASE_LOG_FILENAME
+STAMPED_LOG_FILENAME = 'automation' + '_' + utilities.date_stamp() + '.log'
 
-LOG_FLAGS_TO_PATHS = {
-  'update': LOGS_DIR / "update.log",
-  'control': LOGS_DIR / "control.log"
-}
+# LOG_FLAGS_TO_PATHS = {
+#   'update': LOGS_DIR / "update.log",
+#   'control': LOGS_DIR / "control.log"
+# }
 
 # TODO: remove log_flag or replace with something better
 
@@ -20,13 +21,21 @@ def log(output, log_flag=None, format = None):
   if format == 'title':
     now = datetime.datetime.now()
     timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
-    output = '--*-- {} --*-- ({})'.format(output, timestamp)
+    output = '\n--*-- {} --*-- ({})'.format(output, timestamp)
   
   elif format == 'header':
     output = '--- {} ---'.format(output)
 
-  #log_path = LOG_FLAGS_TO_PATHS[log_flag]
-
+  # Print the log into the terminal
   print(output)
-  with open(BASE_LOG_PATH, "a+") as log_file:
+
+  # Create the automation_logs dir, if it does not exist
+  if not os.path.exists(LOGS_DIR):
+    os.makedirs(LOGS_DIR)
+
+  #IMPORTANT: Create the path down here, in case it didn't exist
+  log_path = LOGS_DIR / STAMPED_LOG_FILENAME
+
+  # Open the log file and write to it (TODO: Improve efficiency, by keeping resource open?)
+  with open(log_path, "a+") as log_file:
     log_file.write(output + "\n")

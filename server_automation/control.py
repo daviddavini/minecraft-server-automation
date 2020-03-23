@@ -1,5 +1,6 @@
 from server_automation import logger
 from server_automation import utilities
+from server_automation import versions
 
 import datetime
 import os
@@ -85,7 +86,7 @@ def shutdown_server():
 
 def stop_server():
   '''Broadcast a countdown and shutdown the server.'''
-  broadcast_countdown('Shutdown', 60)
+  broadcast_countdown('Shutdown', 10)
   shutdown_server()
 
   # In case something goes horribly wrong, we want to save a backup of the world file
@@ -105,6 +106,7 @@ def start_server():
   logger.log('Starting server on screen ' + SERVER_SCREEN + '...', 'control')
 
   command = ['screen', '-S', SERVER_SCREEN, '-d', '-m', 'java', '-Xmx5120M', '-Xms5120M', '-jar', utilities.SERVER_JAR_PATH, 'nogui']
+  print(command)
   subprocess.run(command)
 
   logger.log('Started server.', 'control')

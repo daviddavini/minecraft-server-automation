@@ -17,5 +17,7 @@ if len(sys.argv) >= 2:
     control.restart()
 
 else:
-  versions.update_check()
+  # Treated as a comprehensive test. Perform all tasks
   control.start_check()
+  control.restart()
+  versions.update_check()

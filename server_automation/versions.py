@@ -18,7 +18,7 @@ VERSION_MANIFEST_URL = "https://launchermeta.mojang.com/mc/game/version_manifest
 
 # The path to the backups directory
 BACKUPS_DIRNAME = 'world_backups'
-BACKUPS_DIR = utilities.SERVER_ROOT / BACKUPS_DIRNAME
+BACKUPS_DIR = utilities.PACKAGE_PARENT_DIR / BACKUPS_DIRNAME
 
 # The path to the server's world directory
 WORLD_DIRNAME = 'world'
@@ -94,13 +94,14 @@ def save_world_backup():
 
   # Create the world_backups dir, if it does not exist
   if not os.path.exists(BACKUPS_DIR):
+    logger.log('Backups directory world_backups did not exist. Creating it...')
     os.makedirs(BACKUPS_DIR)
 
   # Make the world backup dirname
   now = datetime.datetime.now()
   timestamp = now.strftime("%Y-%m-%d--%H-%M-%S")
   version_id = get_current_version()
-  backup_dirname = WORLD_DIRNAME + '_' + version_id + '--' + timestamp
+  backup_dirname = WORLD_DIRNAME + '_' + utilities.version_and_time_stamp()
   backup_path = BACKUPS_DIR / backup_dirname
 
   # Copy the world directory into the backup directory
