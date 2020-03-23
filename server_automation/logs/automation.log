@@ -118,3 +118,43 @@ Latest version is 1.15.2.
 Identifying the current version of server.jar...
 Current version of server.jar is 1.15.2.
 Server is already up to date.
+--*-- Server Automation Log --*-- (2020-03-22 22:21:51)
+--- Restart Check ---
+Server is down.
+Starting server on screen minecraft_server...
+Started server.
+Called server command: say Started server. Timestamp: 2020-03-22 22:21:51.656142
+Server is back up.
+--*-- Server Automation Log --*-- (2020-03-22 22:23:00)
+--- Start Check ---
+Server is currently running.
+--*-- Server Automation Log --*-- (2020-03-22 22:23:09)
+--- Server Restart ---
+Server is currently running.
+Broadcasting countdown for Shutdown across 60 seconds...
+Called server command: say ATTENTION: Shutdown will occur in 60 seconds.
+Called server command: say Shutdown in 60 seconds.
+Called server command: say Shutdown in 50 seconds.
+Called server command: say Shutdown in 40 seconds.
+Called server command: say Shutdown in 30 seconds.
+Called server command: say Shutdown in 20 seconds.
+Called server command: say Shutdown in 10 seconds.
+Called server command: say Shutdown in 9 seconds.
+Called server command: say Shutdown in 8 seconds.
+Called server command: say Shutdown in 7 seconds.
+Called server command: say Shutdown in 6 seconds.
+Called server command: say Shutdown in 5 seconds.
+Called server command: say Shutdown in 4 seconds.
+Called server command: say Shutdown in 3 seconds.
+Called server command: say Shutdown in 2 seconds.
+Called server command: say Shutdown in 1 seconds.
+Broadcasted countdown complete.
+Stopping server...
+Called server command: stop
+Stopped server.
+--*-- Server Automation Log --*-- (2020-03-22 22:24:59)
+--- Server Restart ---
+Starting server on screen minecraft_server...
+Started server.
+Called server command: say Started server. Timestamp: 2020-03-22 22:24:59.566097
+Restarted server.

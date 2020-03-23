@@ -13,10 +13,10 @@ def is_server_running():
   process = subprocess.Popen(['screen', '-ls'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
   return str(process.stdout.read()).count(SERVER_SCREEN)
 
-def restart_check():
+def start_check():
   '''Checks whether or not the server is running, and starts it if necessary (using screen).'''
 
-  logger.log('Restart Check', 'control', format='header')
+  logger.log('Start Check', 'control', format='header')
 
   if is_server_running():
     logger.log('Server is currently running.', 'control')
@@ -25,6 +25,20 @@ def restart_check():
   logger.log('Server is down.', 'control')
   start_server()
   logger.log('Server is back up.', 'control')
+
+def restart():
+  '''Restarts the server, regardless of whether or not it is already running.'''
+
+  logger.log('Server Restart', 'control', format='header')
+
+  # Stop the server, if it is running
+  if is_server_running():
+    logger.log('Server is currently running.', 'control')
+    stop_server()
+  
+  start_server()
+  logger.log('Restarted server.', 'control')
+
 
 def call_server_command(command):
   '''Calls a command on the server (using screen).'''
@@ -75,7 +89,7 @@ def stop_server():
   shutdown_server()
 
   # In case something goes horribly wrong, we want to save a backup of the world file
-  save_world_backup()
+  versions.save_world_backup()
 
 def start_server():
   '''Start the server, if it is not already running (in a separate screen).'''
