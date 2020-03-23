@@ -122,9 +122,6 @@ def update_check():
   # Make sure we properly turn off the server, first of all
   control.stop_server()
 
-  # In case something goes horribly wrong, we want to save a backup of the world file
-  save_world_backup()
-
   download_server_jar()
   logger.log('Server is now up to date.', 'update')
 

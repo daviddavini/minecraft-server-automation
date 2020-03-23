@@ -1,6 +1,7 @@
 from server_automation import logger
 from server_automation import utilities
 
+import datetime
 import os
 import time
 import subprocess
@@ -73,8 +74,11 @@ def stop_server():
   broadcast_countdown('Shutdown', 60)
   shutdown_server()
 
+  # In case something goes horribly wrong, we want to save a backup of the world file
+  save_world_backup()
+
 def start_server():
-  '''Start the server (in a separate screen).'''
+  '''Start the server, if it is not already running (in a separate screen).'''
 
   # Important! server.jar will run the server WHEREVER it is called!
   utilities.chdir_to_server_root()
@@ -90,3 +94,7 @@ def start_server():
   subprocess.run(command)
 
   logger.log('Started server.', 'control')
+
+  # Broadcast the time the server was started
+  timestamp = str(datetime.datetime.now())
+  broadcast('Started server. Timestamp: ' + timestamp)
