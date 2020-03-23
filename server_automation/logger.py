@@ -1,7 +1,6 @@
 from server_automation import utilities
 
 import os
-import datetime
 
 LOGS_DIR = utilities.PACKAGE_PARENT_DIR / 'automation_logs'
 
@@ -19,7 +18,7 @@ def log(output, log_flag=None, format = None):
   '''Logs the output based on the given log flag.'''
 
   if format == 'title':
-    now = datetime.datetime.now()
+    now = utilities.datetime_now_PTZ()
     timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
     output = '\n--*-- {} --*-- ({})'.format(output, timestamp)
   

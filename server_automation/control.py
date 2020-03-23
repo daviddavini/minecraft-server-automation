@@ -2,7 +2,6 @@ from server_automation import logger
 from server_automation import utilities
 from server_automation import versions
 
-import datetime
 import os
 import time
 import subprocess
@@ -112,5 +111,5 @@ def start_server():
   logger.log('Started server.', 'control')
 
   # Broadcast the time the server was started
-  timestamp = str(datetime.datetime.now())
+  timestamp = str(utilities.datetime_now_PTZ())
   broadcast('Started server. Timestamp: ' + timestamp)

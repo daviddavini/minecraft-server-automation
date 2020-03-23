@@ -26,15 +26,19 @@ def chdir_to_server_root():
 # TODO: Move this to top, without circular import?
 from server_automation import versions
 
+def datetime_now_PTZ():
+  # Subtract away the server time error to get PTZ timezone (TODO: Change to more general solution)
+  return datetime.datetime.now() - datetime.timedelta(hours=7)
+
 def date_stamp():
   '''Returns a date stamp string, to be used as a file suffix.'''
-  now = datetime.datetime.now()
+  now = datetime_now_PTZ()
   stamp = now.strftime("%Y-%m-%d")
   return stamp
 
 def time_stamp():
   '''Returns a time stamp string, to be used as a file suffix.'''
-  now = datetime.datetime.now()
+  now = datetime_now_PTZ()
   stamp = now.strftime("%Y-%m-%d--%H-%M-%S")
   return stamp
 

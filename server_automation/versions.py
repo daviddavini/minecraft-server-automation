@@ -7,7 +7,6 @@ import pathlib
 import urllib
 import shutil
 import time
-import datetime
 import functools
 
 from server_automation import utilities
@@ -98,9 +97,6 @@ def save_world_backup():
     os.makedirs(BACKUPS_DIR)
 
   # Make the world backup dirname
-  now = datetime.datetime.now()
-  timestamp = now.strftime("%Y-%m-%d--%H-%M-%S")
-  version_id = get_current_version()
   backup_dirname = WORLD_DIRNAME + '_' + utilities.version_and_time_stamp()
   backup_path = BACKUPS_DIR / backup_dirname
 
